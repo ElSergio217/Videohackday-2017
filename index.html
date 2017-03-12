@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+    <link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
+<script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
+<script>ZiggeoApi.token = "09a98fe28529eb1017c7c8e0c2bdf5b9";</script>
 
     <!-- Theme CSS -->
     <link href="css/new-age.css" rel="stylesheet">
@@ -73,7 +76,7 @@
                 <div class="col-sm-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>Add a layer of video onto any printed material using Augmented Reality!</h1>
+                            <h1>Add a layer of video onto any printed material using Augmented Reality Technology!</h1>
                             <a href="#download" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>
                         </div>
                     </div>
@@ -130,7 +133,7 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
+                                    <img src="img/demo-screen-2.jpg" class="img-responsive" alt=""> </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
                                 </div>
@@ -138,10 +141,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
                     <div class="container-fluid">
-                       <center> <h1>Great for
-                       <hr>
+                      <h1>Great for...
+                      <hr>
                         <ul>
                             <li>Birthday Cards</li>
                             <li>Business Cards</li>
@@ -149,7 +154,7 @@
                             <li>Baby Pictures</li>
                             <li>Posters</li>
                             <li>And more!</li>
-                        </ul></h1></center>
+                        </ul></h1>
                     </div>
                 </div>
             </div>
@@ -168,7 +173,10 @@
 
     <section id="contact" class="contact bg-primary">
         <div class="container">
-        <h1>FORM TO DATABASE GOES HERE!</h1>
+        <ziggeo ziggeo-limit=15
+            ziggeo-width=320
+            ziggeo-height=240>
+        </ziggeo>
         </div>
     </section>
 
@@ -200,6 +208,12 @@
 
     <!-- Theme JavaScript -->
     <script src="js/new-age.min.js"></script>
+    <script>
+    ZiggeoApi.Events.on("submitted", function (data) {
+        alert("The video with token " + data.video.token + " has been submitted!");
+        console.log(data);
+    });
+    </script>
 
 </body>
 
