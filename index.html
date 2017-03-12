@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
     <link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css" />
-<script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
-<script>ZiggeoApi.token = "09a98fe28529eb1017c7c8e0c2bdf5b9";</script>
+    <script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
+    <script>ZiggeoApi.token = "09a98fe28529eb1017c7c8e0c2bdf5b9";</script>
 
     <!-- Theme CSS -->
     <link href="css/new-age.css" rel="stylesheet">
@@ -186,12 +186,10 @@
     <input type="file" id="image">
   </div>
   </p>
-  <ziggeorecorder ziggeo-timelimit=15
+<ziggeo ziggeo-limit=15
     ziggeo-width=320
-    ziggeo-height=240
-    ziggeo-theme='modern'
-    id="myRecorder">
-</ziggeorecorder>
+    ziggeo-height=240>
+</ziggeo>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
         </div>
@@ -226,18 +224,8 @@
     <!-- Theme JavaScript -->
     <script src="js/new-age.min.js"></script>
 <script>
-    //we wait for page load to be finished (you could use jQuery ready event as well, or any such alternative that you prefer)
-    ZiggeoApi.Events.on("system_ready", function() {
-    //Lets get the ziggeo-recorder element reference
-    var element = document.getElementById('myRecorder');
-
-    //now lets get the actual Ziggeo embedding / object that we can use
-    var recorder = ZiggeoApi.V2.Recorder.findByElement(element);
-
-    // we can also create a global event to fire each time video was uploaded
-    recorder.on("verified", function () {
-        alert("The video with token '" + recorder.get('video') + "' has been submitted!");
-    });
+ZiggeoApi.Events.on("submitted", function (data) {
+    alert("The video with token " + data.video.token + " has been submitted!");
 });
 </script>
 
