@@ -173,6 +173,21 @@
 
     <section id="contact" class="contact bg-primary">
         <div class="container">
+         <form class="form-inline">
+         <p>
+  <div class="form-group">
+    <label for="name">Campaign Name</label>
+    <input type="name" class="form-control" id="name">
+  </div>
+  <p>
+  <p>
+  <div class="form-group">
+    <label for="image">Image:</label>
+    <input type="file" id="image">
+  </div>
+  </p>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
         <ziggeo ziggeo-limit=15
             ziggeo-width=320
             ziggeo-height=240>
@@ -209,6 +224,7 @@
     <!-- Theme JavaScript -->
     <script src="js/new-age.min.js"></script>
     <script>
+
     ZiggeoApi.Events.on("submitted", function (data) {
         alert("The video with token " + data.video.token + " has been submitted!");
         console.log(data);
