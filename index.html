@@ -179,19 +179,21 @@
     <label for="name">Campaign Name</label>
     <input type="name" class="form-control" id="name">
   </div>
-  <p>
+  </p>
   <p>
   <div class="form-group">
     <label for="image">Image:</label>
     <input type="file" id="image">
   </div>
   </p>
+  <ziggeorecorder ziggeo-timelimit=15
+    ziggeo-width=320
+    ziggeo-height=240
+    ziggeo-theme='modern'
+    id="myRecorder">
+</ziggeorecorder>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-        <ziggeo ziggeo-limit=15
-            ziggeo-width=320
-            ziggeo-height=240>
-        </ziggeo>
         </div>
     </section>
 
@@ -223,13 +225,21 @@
 
     <!-- Theme JavaScript -->
     <script src="js/new-age.min.js"></script>
-    <script>
+<script>
+    //we wait for page load to be finished (you could use jQuery ready event as well, or any such alternative that you prefer)
+    ZiggeoApi.Events.on("system_ready", function() {
+    //Lets get the ziggeo-recorder element reference
+    var element = document.getElementById('myRecorder');
 
-    ZiggeoApi.Events.on("submitted", function (data) {
-        alert("The video with token " + data.video.token + " has been submitted!");
-        console.log(data);
+    //now lets get the actual Ziggeo embedding / object that we can use
+    var recorder = ZiggeoApi.V2.Recorder.findByElement(element);
+
+    // we can also create a global event to fire each time video was uploaded
+    recorder.on("verified", function () {
+        alert("The video with token '" + recorder.get('video') + "' has been submitted!");
     });
-    </script>
+});
+</script>
 
 </body>
 
